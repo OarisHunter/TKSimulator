@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://s4k6qy00rgie"]
+
+[ext_resource type="PackedScene" uid="uid://cgu7meogq2g7p" path="res://player.tscn" id="1_bgrmn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_cb2pd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6lagj"]
+size = Vector2(14, 649)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lfe26"]
+size = Vector2(1163, 20)
+
+[node name="world" type="Node2D"]
+position = Vector2(593, 312)
+
+[node name="player" parent="." instance=ExtResource("1_bgrmn")]
+
+[node name="world-collision" type="Node" parent="."]
+
+[node name="left-right" type="StaticBody2D" parent="world-collision"]
+position = Vector2(123.149, 143.165)
+physics_material_override = SubResource("PhysicsMaterial_cb2pd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world-collision/left-right"]
+position = Vector2(1027.85, 175.835)
+shape = SubResource("RectangleShape2D_6lagj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="world-collision/left-right"]
+position = Vector2(-123.149, 180.335)
+shape = SubResource("RectangleShape2D_6lagj")
+
+[node name="top-bottom" type="StaticBody2D" parent="world-collision"]
+position = Vector2(317, 142)
+physics_material_override = SubResource("PhysicsMaterial_cb2pd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world-collision/top-bottom"]
+position = Vector2(258.5, -143)
+shape = SubResource("RectangleShape2D_lfe26")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="world-collision/top-bottom"]
+position = Vector2(256, 509)
+shape = SubResource("RectangleShape2D_lfe26")
